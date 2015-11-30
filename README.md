@@ -1,4 +1,6 @@
 # lastword
+
+[![Join the chat at https://gitter.im/theJian/lastword](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/theJian/lastword?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Life is short, we may die anytime.  
 If I'm going to die, at least let me say goodbye.  
 
