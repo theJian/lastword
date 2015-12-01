@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "description": "Automatically sending a message to any emaill address when you died",
   "main": "server.js",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongoose": "^4.2.8",
+    "nodemailer": "^1.10.0"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
