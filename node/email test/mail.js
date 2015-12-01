@@ -6,7 +6,7 @@
 
 var nodemail = require("nodemailer");
 
-// in 0.x version you'd better ot use this synx
+// --in 0.x version you'd better ot use this statement and option
 // var transport = nodemail.createTransport("SMTP",{
 // 	host:"smtp.qq.com",
 // 	secureConnection: true, // use SSL
@@ -17,19 +17,24 @@ var nodemail = require("nodemailer");
 //     }
 // });
 
+// for STMP transmission
+
+// for well known producer
 var transport = nodemail.createTransport({
 	service:"Gmail",
 	auth:{
-		user:"test@gmail.com",
-		pass:"PASSWORD"
+		user:"@gmail.com",
+		pass:"*"
 	}
 })
+// to find more service producer,
+// check this link https://github.com/andris9/nodemailer-wellknown#supported-services
 
 var mail_option = {
-	from	:"LAST_WORD",
-	to		:"wutianzhe123@yeah.net",
+	from	:"LAST_WORD<wutianzhe123@gmail.com>",
+	to		:'wutianzhe123@yeah.net,827006579@qq.com',
 	subject :"FIRST MAIL",
-	generateTextFromHTML:true,
+	text	:"Hello!User",
 	html	:"<br/>Hello <br/>User"
 }
 
@@ -39,7 +44,7 @@ transport.sendMail({
 	if(err){
 		console.log(err);
 	}else{
-		console.log("Msg"+response.message);
+		console.log("Msg"+response.messageId);
 	}
 	transport.close();
 })
