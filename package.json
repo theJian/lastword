@@ -1,0 +1,22 @@
+{
+  "name": "lastword",
+  "version": "0.0.0",
+  "description": "Automatically sending a message to any emaill address when you died",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theJian/lastword.git"
+  },
+  "author": "",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/theJian/lastword/issues"
+  },
+  "homepage": "https://github.com/theJian/lastword#readme"
+}
