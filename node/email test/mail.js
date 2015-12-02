@@ -1,13 +1,13 @@
 // created by zhe13 @ 12.1.2015
 // use module NodeMailer
 // ***
-// 
+//zhe13 @ 12.2.2015 use virtual stmp mail address instead of Gamil
 // 
 
 var nodemail = require("nodemailer");
 
-// --in 0.x version you'd better ot use this statement and option
-// var transport = nodemail.createTransport("SMTP",{
+// --STMP Mode,in vision0.x,need to add "STMP"
+// var transport = nodemail.createTransport({
 // 	host:"smtp.qq.com",
 // 	secureConnection: true, // use SSL
 //     port: 465, // port for secure SMTP
@@ -20,31 +20,37 @@ var nodemail = require("nodemailer");
 // for STMP transmission
 
 // for well known producer
-var transport = nodemail.createTransport({
-	service:"Gmail",
-	auth:{
-		user:"@gmail.com",
-		pass:"*"
-	}
-})
+// var transport = nodemail.createTransport({
+// 	service:"Gmail",
+// 	auth:{
+// 		user:"",
+// 		pass:"",
+// 		xoauth2:""
+// 	}
+// });
 // to find more service producer,
 // check this link https://github.com/andris9/nodemailer-wellknown#supported-services
 
 var mail_option = {
-	from	:"LAST_WORD<wutianzhe123@gmail.com>",
-	to		:'wutianzhe123@yeah.net,827006579@qq.com',
+	from	:"LAST_WORD<123@qq.com>",
+	to		:'852216251@qq.com',
 	subject :"FIRST MAIL",
 	text	:"Hello!User",
-	html	:"<br/>Hello <br/>User"
-}
+	html	:"<br/>Hello <br/>User",
+	// attachments
+	attachments:[
+		{
+			filename:"家庭教师.avi",
+			content:new Buffer("Here is a porn!","utf-8")
+		}
+	] 
+};
 
-transport.sendMail({
-	
-},function(err,response){
+transport.sendMail(mail_option,function(err,response){
 	if(err){
 		console.log(err);
 	}else{
 		console.log("Msg"+response.messageId);
 	}
 	transport.close();
-})
+});
