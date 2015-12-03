@@ -18,16 +18,17 @@ mongoose.connect(configDB.url); // connect to database
 app.use(express.static('public')); // set static files directory
 app.use(morgan('dev')); // log to console
 app.use(cookieParser()); // read cookies 
-app.use(bodyParser.urlencoded()); // get infomations from html form
+app.use(bodyParser.urlencoded({ extended : false })); // get infomations from html form
 app.use(bodyParser.json());
 
+app.set('views', './views'); // set template files directory
 app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport
-// app.use(session({ secret : 'keyboard monkey'})); // session secret
+app.use(session({ secret : 'keyboard monkey', resave : true, saveUninitialized: false })); // session secret
 // app.use(passport.initialize());
 // app.use(passport.session()); // persistent login sessions
-// app.use(flash()); // flash message stored in session
+app.use(flash()); // flash message stored in session
 
 // routes
 require('./routes.js')(app, passport); // load routes and pass in app and passport
