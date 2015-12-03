@@ -20,20 +20,20 @@ var nodemail = require("nodemailer");
 // for STMP transmission
 
 // for well known producer
-// var transport = nodemail.createTransport({
-// 	service:"Gmail",
-// 	auth:{
-// 		user:"",
-// 		pass:"",
-// 		xoauth2:""
-// 	}
-// });
+var transport = nodemail.createTransport({
+	service:"Gmail",
+	auth:{
+		user:"lastword2016",
+		pass:"2016lastword",
+		xoauth2:""
+	}
+});
 // to find more service producer,
 // check this link https://github.com/andris9/nodemailer-wellknown#supported-services
 
 var mail_option = {
 	from	:"LAST_WORD<123@qq.com>",
-	to		:'852216251@qq.com',
+	to		:'thejianmail@gmail.com',
 	subject :"FIRST MAIL",
 	text	:"Hello!User",
 	html	:"<br/>Hello <br/>User",
