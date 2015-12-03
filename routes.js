@@ -3,17 +3,25 @@
 module.exports = function (app, passport) {
 	// Home page
 	app.get('/', function (req, res) {
-		res.render('index.ejs');
+		res.render('index.ejs', {
+			title: 'Lastword - say goodbye to the world'
+		});
 	});
 
 	// Login page
 	app.get('/login', function  (req, res) {
-		res.render('login.ejs', { message : req.flash('loginMessage')});
+		res.render('login.ejs', { 
+			title: 'Login to Lastword',
+			message : req.flash('loginMessage')
+		});
 	});
 
 	// Sign up page
 	app.get('/signup', function  (req, res) {
-		res.render('signup.ejs', { message : req.flash('signupMessage')});
+		res.render('signup.ejs', { 
+			title: 'Sign Up for Lastword',
+			message : req.flash('signupMessage')
+		});
 	});
 
 	// Protected profile page
