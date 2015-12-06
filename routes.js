@@ -41,7 +41,8 @@ module.exports = function (app, passport) {
 	// Protected profile page
 	app.get('/profile', isLoggedIn, function (req, res) {
 		res.render('profile.ejs', {
-			user : req.user
+			title : 'Profile',
+			user : req.user.local.email
 		});
 	});
 
@@ -53,9 +54,10 @@ module.exports = function (app, passport) {
 	
 	// is user logged in
 	function isLoggedIn (req, res, next) {
-		if(!req.isAuth()) {
-			next('routes');
+		if(!req.isAuthenticated()) {
 			res.redirect('/');
+		} else {
+			return next();
 		}
 	}
 }
