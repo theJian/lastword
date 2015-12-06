@@ -11,14 +11,14 @@
 			<%= message %>
 		</div>
 		<% } %>
-		<form>
+		<form action="/login" method="POST">
 			<div class="form-group">
 				<label for="inputEmail">Email Address</label>
-				<input type="email" class="form-control" id="inputEmail" placeholder="Email">
+				<input type="email" class="form-control" id="inputEmail" placeholder="Email" name="Email">
 			</div>
 			<div class="form-group">
 				<label for="inputPassword">Password</label>
-				<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+				<input type="password" class="form-control" id="inputPassword" placeholder="Password" name="Password">
 			</div>
 			<p class="text-muted text-right">Need a account? <a href="./signup">sign up</a></p>
 			<button type="submit" class="btn btn-default btn-lg btn-block">login</button>
