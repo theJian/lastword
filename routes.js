@@ -16,6 +16,13 @@ module.exports = function (app, passport) {
 		});
 	});
 
+	// process login request
+	app.post('/login', passport.authenticate('local-login', {
+		successRedirect: '/profile',
+		failureRedirect: '/login',
+		failureFlash: true
+	}));
+
 	// Sign up page
 	app.get('/signup', function  (req, res) {
 		res.render('signup.ejs', { 
@@ -23,6 +30,13 @@ module.exports = function (app, passport) {
 			message : req.flash('signupMessage')
 		});
 	});
+
+	// process signup request
+	app.post('/signup', passport.authenticate('local-signup', {
+		successRedirect: '/profile',
+		failureRedirect: '/signup',
+		failureFlash: true
+	}));
 
 	// Protected profile page
 	app.get('/profile', isLoggedIn, function (req, res) {
@@ -36,7 +50,7 @@ module.exports = function (app, passport) {
 		req.logout();
 		res.redirect('/');
 	});
-
+	
 	// is user logged in
 	function isLoggedIn (req, res, next) {
 		if(!req.isAuth()) {
