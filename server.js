@@ -13,6 +13,7 @@ var configDB = require('./config/mongodb.js');
 
 // configuration
 mongoose.connect(configDB.url); // connect to database
+require('./config/passport.js')(passport);
 
 // setup express applications
 app.use(express.static('public')); // set static files directory
@@ -26,8 +27,8 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport
 app.use(session({ secret : 'keyboard monkey', resave : true, saveUninitialized: false })); // session secret
-// app.use(passport.initialize());
-// app.use(passport.session()); // persistent login sessions
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
 app.use(flash()); // flash message stored in session
 
 // routes
