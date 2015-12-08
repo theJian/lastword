@@ -1,9 +1,8 @@
 // routes.js
 
-var auth = require('./routers/auth'); // import auth router
-
 module.exports = function (app, passport) {
 
+	var auth = require('./routers/auth')(passport);
 	app.use('/auth', auth);
 
 	// Home page
@@ -56,7 +55,7 @@ module.exports = function (app, passport) {
 		req.logout();
 		res.redirect('/');
 	});
-	
+
 	// is user logged in
 	function isLoggedIn (req, res, next) {
 		if(!req.isAuthenticated()) {
