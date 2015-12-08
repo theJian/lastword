@@ -1,5 +1,7 @@
 // day 07.12.2015 @zhe13 
 // captcha
+// day 08.12.2015 @zhe13
+// fix port and ip
 
 // @SAMPLE
 // var ccap = require("ccap");
@@ -15,18 +17,31 @@
 //         return text;
 //     }//default is a 6 digit number from a-z,0-9
 // });
+
+
 "use strict"
 var http = require("http");
 var ccap = require("ccap");
 var captcha = ccap();
 http.createServer(function(request,response){
+    response.writeHead(200, {'Content-Type': 'text/plain'});
     if(request.url == "/favicon.icon")
     return response.end("");
     let any = captcha.get();
     let txt = any[0];
     let pic_buf = any[1];
-    response.end(buf);
-    console.log(txt)
-}).listen($PORT);
+    response.end(pic_buf);
+    console.log("YANZHENGMA",txt);
+}).listen(process.env.PORT,process.env.IP);
 
-console.log("Server running at http://127.0.0.1:9522/");
+console.log("Server running at http://127.0.0.1:8080/");
+
+
+exports.getChecksum = function(){
+    let any = captcha.get();
+    let code={
+        txt     : any[0],
+        pic_buf : any[1]
+    };
+    return code;
+}
