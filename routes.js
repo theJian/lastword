@@ -1,6 +1,11 @@
 // routes.js
 
+var auth = require('./routers/auth'); // import auth router
+
 module.exports = function (app, passport) {
+
+	app.use('/auth', auth);
+
 	// Home page
 	app.get('/', function (req, res) {
 		res.render('index.ejs', {
