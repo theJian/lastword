@@ -13,5 +13,13 @@ module.exports = function (passport) {
 		failureFlash: true
 	}));
 
+	router.get('/twitter', passport.authenticate('twitter'));
+
+	router.get('/twitter/callback', passport.authenticate('twitter', {
+		successRedirect: '/profile',
+		failureRedirect: '/',
+		failureFlash: true
+	}));
+
 	return router;
 }
