@@ -79,6 +79,7 @@ module.exports = function (passport) {
 		enableProof: auth.facebookAuth.enableProof
 	}, function (accessToken, refreshToken, profile, done) {
 		process.nextTick(function () {
+			console.log('**************************\n' + accessToken);
 			User.findOne({ 'facebook.id' : profile.id }, function  (err, user) {
 				if(err) return done(err);
 

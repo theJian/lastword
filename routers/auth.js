@@ -2,12 +2,16 @@
 
 var router = require('express').Router();
 
-router.get('/', function (req, res) {
-	res.send('auth');
-});
+module.exports = function (passport) {
 
-router.get('/facebook', function (req, res) {
-	res.send('auth/facebook');
-});
+	router.get('/facebook', passport.authenticate('facebook'));
 
-module.exports = router;
+	// TODO: this shit doesn't work
+	router.get('/facebook/callback', passport.authenticate('facebook', {
+		successRedirect: '/profile',
+		failureRedirect: '/',
+		failureFlash: true
+	}));
+
+	return router;
+}
