@@ -1,6 +1,8 @@
 // passport.js
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
+var GithubStrategy = require('passport-github').Strategy;
 var User = require('../models/user.js'); // import user model
 var auth = require('./auth.js'); // import auth configuration
 
@@ -98,6 +100,37 @@ module.exports = function (passport) {
 						return done(null, newUser);
 					});
 				} else { // user exists
+					return done(null, user);
+				}
+			});
+		});
+	}));
+
+	// twitter auth
+	passport.use(new TwitterStrategy({
+		consumerKey: auth.twitterAuth.consumerKey,
+		consumerSecret: auth.twitterAuth.consumerSecret,
+		callbackURL: auth.twitterAuth.callbackURL
+	}, function (token, tokenSecret, profile, done) {
+		process.nextTick(function () {
+			User.findOne({ 'twitter.id' : profile.id }, function (err, user) {
+				if(err) return done(err);
+
+				// user donesn't exist, create a new user
+				if(!user) {
+					var newUser = new User();
+					newUser.twitter.id = profile.id;
+					newUser.twitter.token = token;
+					newUser.twitter.displayName = profile.displayName;
+					newUser.twitter.username = profile.username;
+
+					newUser.save(function (err) {
+						if(err) {
+							throw err;
+						}
+						return done(null, newUser);
+					});
+				} else {
 					return done(null, user);
 				}
 			});

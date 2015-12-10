@@ -6,7 +6,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
-    "ccap":"^0.6.4",
+    "ccap": "^0.6.4",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.0",
     "ejs": "^2.3.4",
@@ -15,10 +15,11 @@
     "method-override": "^2.3.5",
     "mongoose": "^4.2.8",
     "morgan": "^1.6.1",
+    "node-imap": "^0.8.16",
     "nodemailer": "^1.10.0",
-    "node-imap":"^0.8.16",
     "passport": "^0.3.2",
     "passport-facebook": "^2.0.0",
+    "passport-github": "^1.0.0",
     "passport-google-oauth": "^0.2.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.3"
