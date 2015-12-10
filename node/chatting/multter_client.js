@@ -1,6 +1,7 @@
 // day 12.9.2015 @zhe13
 //      this is a test client for post api
-// 
+// day 12.10.2015 @zhe13
+//      test successfully.
 
 // fix github email address. 
 "use strict"
