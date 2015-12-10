@@ -23,10 +23,11 @@ var req = http.request(option,function(res){
         data += d;
     });
     res.on("end",function() {
-        assert.strictEqual(data,'{"status":"OK","message":"msgs received"}');
+        assert.strictEqual(data,'{"status":"OK","message":"received successfully"}');
     });
     
 });
 
-req.write("msgs = test","utf-8");
+// obey the api in server.
+req.write("msg=hello theJian");
 req.end();
